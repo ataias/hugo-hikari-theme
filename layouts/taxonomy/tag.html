@@ -1,0 +1,36 @@
+{{ partial "head" . }}
+
+<body>
+
+    {{ partial "off-canvas" . }}
+
+    <div class="site-wrapper">
+        {{ partial "header" . }}
+
+        <section class="single-wrap">
+            <article class="single-content">
+                <section id="main">
+
+                    <h1 id="title">{{ .Title }}</h1>
+                    <ul>
+                        {{ range .Data.Pages }}
+                        <li>
+                            <a class="no_underline" href="{{ .Permalink }}">
+                                {{ .LinkTitle }}
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+
+                </section>
+            </article>
+
+        </section>
+
+        {{ partial "footer" . }}
+    </div>
+
+    {{ partial "js" . }}
+</body>
+
+</html>

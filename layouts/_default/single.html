@@ -1,11 +1,11 @@
 {{ partial "head" . }}
 <body>
-    
+
     {{ partial "off-canvas" . }}
 
     <div class="site-wrapper">
         {{ partial "header" . }}
-        
+
         <section class="single-wrap">
             <article class="single-content" itemscope itemtype="//schema.org/BlogPosting">
                 <div class="feat">
@@ -18,13 +18,19 @@
                 <h1 class="page-title" itemprop="name headline">{{ .Title }}</h1>
                 <div itemprop="articleBody">
                     {{ .Content }}
+                    <h5>Tags</h5>
+                    <ul id="tags">
+                        {{ range .Params.tags }}
+                        <li><a class="no_underline" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a> </li>
+                        {{ end }}
+                    </ul>
                 </div>
                 <div class="feat share">
                     <a href="//twitter.com/share" class="popup">
                         <span class="icon-twitter"></span>
                     </a>
                 </div>
-                
+
                 {{ template "_internal/disqus.html" . }}
 
                 {{ if .NextInSection }}
@@ -42,7 +48,7 @@
 
         {{ partial "footer" . }}
     </div>
-    
+
     {{ partial "js" . }}
 </body>
 </html>

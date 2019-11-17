@@ -1,0 +1,28 @@
+{{ partial "head" . }}
+
+<body>
+
+    {{ partial "off-canvas" . }}
+
+    <div class="site-wrapper">
+        {{ partial "header" . }}
+
+        <section class="single-wrap">
+            <article class="single-content">
+                <ul id="all-tags">
+                    {{ $data := .Data }} {{ range $key, $value := .Site.Taxonomies.tags.ByCount }}
+                    <li><a class="no_underline" href="{{ $value.Name | urlize }}"> {{ $value.Name }} </a>
+                        {{ $value.Count }} </li>
+                    {{ end }}
+                </ul>
+            </article>
+        </section>
+
+
+        {{ partial "footer" . }}
+    </div>
+
+    {{ partial "js" . }}
+</body>
+
+</html>
