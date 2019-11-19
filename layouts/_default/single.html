@@ -34,12 +34,12 @@
                 {{ template "_internal/disqus.html" . }}
 
                 {{ if .NextInSection }}
-                    <a rel="next" href="{{ .NextInSection.Permalink }}" id="next">
+                    <a rel="next" href="{{ .NextInSection.RelPermalink }}" id="next">
                         <span class="nav-title nav-title-next">{{ with .Site.Params.newer }}{{ . }}{{ end }}</span> &rarr;
                     </a>
                 {{ end }}
                 {{ if .PrevInSection }}
-                    <a rel="prev" href="{{ .PrevInSection.Permalink }}" id="prev">
+                    <a rel="prev" href="{{ .PrevInSection.RelPermalink }}" id="prev">
                         &larr; <span class="nav-title nav-title-prev">{{ with .Site.Params.older }}{{ . }}{{ end }}</span>
                     </a>
                 {{ end }}

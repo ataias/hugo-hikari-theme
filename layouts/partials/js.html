@@ -5,7 +5,7 @@
 <!-- prettier-ignore -->
 {{ $js := $mainJs | minify | fingerprint }}
 
-<script src="{{ $js.Permalink }}"></script>
+<script src="{{ $js.RelPermalink }}"></script>
 
 {{ range .Site.Params.custom_js }}
 <script src="{{ $.Site.BaseURL }}{{ . }}"></script>

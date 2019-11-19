@@ -1,19 +1,22 @@
 <main>
     <div id="home">
         <ul class="posts">
-        {{ $paginator := .Paginate (where .Site.RegularPages.ByDate.Reverse "Type" "post") }}
-        {{ range $paginator.Pages }}
+            <!-- prettier-ignore -->
+            {{ $paginator := .Paginate (where .Site.RegularPages.ByDate.Reverse "Type" "post") }}
+
+            <!-- prettier-ignore -->
+            {{ range $paginator.Pages }}
             <li itemscope itemtype="//schema.org/BlogPosting">
-                <a href="{{ .Permalink }}" itemprop="url">
+                <a href="{{ .RelPermalink }}" itemprop="url">
                     <div class="p-wrap">
                         <time datetime="" itemprop="datePublished">
-                        {{ .Date.Format "02 Jan 2006" }}
+                            {{ .Date.Format "02 Jan 2006" }}
                         </time>
                         <p itemprop="name headline">{{ .Title }}</p>
                     </div>
                 </a>
             </li>
-        {{ end }}
+            {{ end }}
         </ul>
     </div>
 </main>
