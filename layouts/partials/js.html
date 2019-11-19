@@ -1,5 +1,15 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="{{ .Site.BaseURL }}js/main.js"></script>
+
+<!-- prettier-ignore -->
+{{ $mainJs := resources.Get "js/main.js" }}
+<!-- prettier-ignore -->
+{{ $js := $mainJs | minify | fingerprint }}
+
+<script src="{{ $js.Permalink }}"></script>
+
 {{ range .Site.Params.custom_js }}
 <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
-{{ end}} {{ template "_internal/google_analytics.html" . }}
+{{ end}}
+
+<!-- prettier-ignore -->
+{{ template "_internal/google_analytics.html" . }}

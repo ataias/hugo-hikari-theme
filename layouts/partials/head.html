@@ -19,7 +19,15 @@
     {{ end }}
 
     {{ "<!-- Stylesheets -->" | safeHTML }}
-    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/main.css" />
+    {{ $mainStyle := resources.Get "css/main.css" }}
+    {{ $style := $mainStyle | minify | fingerprint }}
+    <style amp-custom>
+    /* csslint ignore:start */
+    {{ $style.Content | safeCSS }}
+    /* csslint ignore:end */
+    </style>
+
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700|Lora:400,700,400italic" rel="stylesheet" type="text/css">
     {{ range .Site.Params.custom_css }}
     <link rel="stylesheet" href="{{ $.Site.BaseURL}}{{ . }}">

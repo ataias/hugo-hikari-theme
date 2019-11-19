@@ -1,10 +1,8 @@
 <div class="off-canvas">
-    <figure class="avatar">
-        <img
-            src="{{ .Site.BaseURL }}img/avatar.jpg"
-            title="{{ with .Site.Params.name }}{{ . }}{{ end }}"
-        />
-    </figure>
+    <img
+        src="{{ .Site.Params.offcanvas.avatar }}"
+        title="{{ with .Site.Params.name }}{{ . }}{{ end }}"
+    />
     <div class="bio">
         {{ with .Site.Params.offcanvas.title }}
         <h1>{{ . }}</h1>
